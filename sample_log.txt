@@ -1,0 +1,1 @@
+(date - YYYY-MM-DD) | (today's tasks) | (menstrual cycle day) | (energy levels during the task (1 to 5)) | (notes) | (reasons for energy level)  
