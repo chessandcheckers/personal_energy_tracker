@@ -4,9 +4,10 @@ from datetime import datetime, timedelta
 
 #project_folder = os.path.abspath(__file__) #answers: where's the file by showing its physical location in the pc(full address)
 project_folder = os.path.dirname(os.path.abspath(__file__))#taking only the file from the whole address
-log_folder = os.path.join(project_folder, "logs")#joins the folder 'logs' with proper structure ('\')
-os.makedirs(log_folder, exist_ok=True)#creates folder and checks if it exists
-file_path = os.path.join(log_folder, "log.txt")#adds file 'log.txt' to folder path with structure
+#log_folder = os.path.join(project_folder, "logs")#joins the folder 'logs' with proper structure ('\')
+#os.makedirs(log_folder, exist_ok=True)#creates folder and checks if it exists
+#file_path = os.path.join(log_folder, "log.txt")#adds file 'log.txt' to folder path with structure; dont want to make log folder, just put data in log.txt
+file_path = os.path.join(project_folder, "log.txt")
 
 def data_enter(): #enter data into log.txt
     #date = input("enter today's date: ")#remove this, make date auto detect
@@ -57,7 +58,7 @@ def plot_data():
         print("energies not present")
         return
     plt.figure(figsize=(10,5))
-    plt.plot(dates, energies, marker='o', linestyle='-', color='teal')
+    plt.plot(dates, energies, marker='o')
     plt.title("Energy Levels Over Time")
     plt.xlabel("Date")
     plt.ylabel("Energy (1-5)")
@@ -92,10 +93,43 @@ def avg_energy_7():
     print("Average energy (last 7 days):", round(avg, 2))
         
 
+def edit_data():
+    if not os.path.exists(file_path):
+        print("no log found")
+        return
+    with open(file_path, "r") as f:
+        lines = f.readlines()
+    if not lines:
+        print("data not present, cannot edit.")
+        return 
+    
+    print("existing entries: ")
+    for i, line in enumerate(lines):
+        print(f"{i}:{line.strip()}")
+
+    index = int(input("enter index of entry to edit: "))
+    if index < 0 or index >= len(lines):
+        print("invalid index")
+        return
+    
+    parts = lines[index].strip().split(" | ")
+    print("current values(press enter to keep the same): ")
+    date = parts[0]
+    task = input(f"task[{parts[1]}]: ") or parts[1]
+    cycle_day = input(f"cycle day[{parts[2]}]: ") or parts[2]
+    energy = input(f"energy[{parts[3]}]: ") or parts[3]
+    note = input(f"note [{parts[4]}]: ") or parts[4]
+    reason = input(f"reason [{parts[5]}]: ") or parts[5]
+
+    edited_line = f"{date} | {task} | {cycle_day} | {energy} | {note} | {reason} | [EDITED]\n"
+    with open(file_path, "a") as f:
+        f.write(edited_line)
+
+    print("entry entered and saved. Original entry preserved.")
+
 
 while True:
-    print("select: ")
-    print("1. enter data \n2. view data \n3. graphical representation of data\n\ta) full data\n\tb) avg of 7 days \n4. exit")
+    print("1. enter data \n2. view data \n3. graphical representation of data\n\ta) full data\n\tb) avg of 7 days \n4. edit data\n 5.exit")
     choice = int(input("choose: "))
 
     if choice == 1:
@@ -108,5 +142,7 @@ while True:
             plot_data()
         elif choose_plot == 'b':
             avg_energy_7()
+    elif choice == 4:
+        edit_data()
     else:
         break
