@@ -1,23 +1,47 @@
-21.01.26:
-The purpose of this project is to track myself - the tasks i do & my energy levels. This is meant to be a dataset for me to reflect on. 
-not only is it accumulating data, it is also making me show up 
-every day which is the main motivation of this project.
+## Overview
 
-____________________________________________________________________________________________________________________
-30.01.26:
-this project is my first project. im building it using python. i first developed the basic-most functionalities
-then went on to add necessary features. this application is to learn skills as well as to have a tangible and
-working project to put on my resume.
-this project is to collect data about my habits and patterns:
- - how i work
- - when i work
- - what kind
- - when am i most productive
- - when do i need rest and reflection, etc. 
+This is my first serious Python project.
+The purpose of this project is to apply Python concepts by building a
+real, evolving program rather than isolated scripts.
 
-it maps data such as:
-- date
-- tasks finished
-- energy levels
-- menstrual cycle
-- whatever motivation is keeping me going.
+The application helps me stay consistent by logging daily entries
+related to my work and energy levels. Over time, this data becomes a
+dataset I can reflect on to understand my habits, productivity patterns,
+and need for rest.
+
+Showing up every day is a core motivation behind this project.
+
+---
+
+## Project Timeline
+
+**21-01-2026**  
+I started this project to track the tasks I perform and my daily energy
+levels. The goal was to create a personal dataset for reflection while
+building the habit of consistent daily logging.
+
+**30-01-2026**  
+I expanded the project by adding new features incrementally.
+This project serves both as a learning exercise in Python and as a
+working, tangible application that I can include on my resume.
+
+---
+
+## What This Project Tracks
+
+This application collects data about my habits and work patterns, such as:
+
+- Date
+- Tasks completed
+- Energy levels
+- Menstrual cycle phase
+- Notes and motivations influencing the day
+
+---
+
+## Purpose
+
+Through this project, I aim to:
+- Practice Python through a real-world use case
+- Build consistency and self-awareness
+- Learn how to design, extend, and maintain a working application over time
